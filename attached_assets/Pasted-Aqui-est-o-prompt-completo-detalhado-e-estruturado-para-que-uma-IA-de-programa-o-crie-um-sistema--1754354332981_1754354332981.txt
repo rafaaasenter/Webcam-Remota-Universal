@@ -1,0 +1,118 @@
+Aqui está o prompt completo, detalhado e estruturado para que uma IA de programação crie um sistema de webcam robusto e autônomo, composto por um aplicativo Android (.apk) e um programa para PC (.exe).
+
+Prompt para IA de Programação Completa
+Nome do Projeto: Webcam Remota Universal
+
+Objetivo:
+Crie um sistema completo, sem a necessidade de ferramentas externas ou aplicativos de terceiros, que transforme um dispositivo móvel Android em uma webcam profissional para um computador Windows. O sistema deve ser composto por um aplicativo compilado em .apk e um programa executável compilado em .exe. O sistema deve oferecer transmissão de vídeo e áudio de alta qualidade e baixa latência, com opções de conexão via Wi-Fi e USB.
+
+Princípios Essenciais de Desenvolvimento
+Autonomia: Nenhuma ferramenta externa (como ADB) ou aplicativos de lojas (como Google Play) devem ser exigidos do usuário. A solução deve ser completamente auto-suficiente.
+
+Performance e Sincronização: A prioridade é a baixa latência na transmissão de vídeo e áudio. Utilize codecs e protocolos de rede otimizados. A sincronização entre o vídeo e o áudio é crucial e deve ser mantida com o uso de timestamps.
+
+Robustez: O sistema deve ser capaz de lidar com interrupções de conexão (Wi-Fi, USB) sem travar. Ele deve tentar reconectar ou voltar a um estado inicial de forma segura e transparente para o usuário.
+
+Experiência do Usuário (UX): As interfaces do usuário devem ser simples e intuitivas, com feedback visual claro sobre o status da conexão.
+
+Parte 1: Aplicativo Android (.apk)
+Tecnologias:
+
+Linguagem: Kotlin.
+
+APIs: Camera2 API para acesso à câmera, AudioRecord para captura de áudio.
+
+Networking: Sockets (TCP/IP) para a transmissão de dados e UDP Broadcast para a descoberta de dispositivos na rede local.
+
+Estrutura Lógica Detalhada:
+
+Inicialização:
+
+Ao abrir, o aplicativo deve solicitar as permissões de Câmera, Microfone e Acesso à Rede.
+
+Verificar a disponibilidade do hardware e exibir uma mensagem de erro se a câmera ou o microfone estiverem inacessíveis.
+
+Módulo de Captura:
+
+Crie um thread para capturar o stream de vídeo da Camera2 API e outro para capturar o áudio do AudioRecord.
+
+Sincronize os streams com timestamps para garantir que o vídeo e o áudio fiquem em perfeita harmonia.
+
+Codifique os dados em tempo real: utilize H.264 para o vídeo e AAC para o áudio, para garantir uma alta qualidade com compressão eficiente.
+
+Módulo de Conexão (Modo Servidor e Descoberta):
+
+O aplicativo deve atuar como um servidor que escuta conexões.
+
+Descoberta de Dispositivos (Wi-Fi): Ao iniciar, o aplicativo deve enviar um pacote UDP de broadcast na rede local em uma porta específica (ex: 5000). Ele deve ouvir por respostas do programa do PC por um tempo definido.
+
+Modo Wi-Fi:
+
+Se a descoberta encontrar um ou mais PCs, o aplicativo deve exibir uma lista para o usuário.
+
+Se a descoberta falhar, ele deve oferecer a opção de inserir o IP e a porta manualmente.
+
+Modo USB: Implemente a lógica para atuar como um servidor de rede sobre a interface USB. Isso requer a criação de um canal de comunicação de dados de baixo nível que não dependa do adb.
+
+Interface do Usuário (UI):
+
+Uma tela principal com um grande painel para exibir o status atual da conexão.
+
+Um botão "Procurar Dispositivos" que inicia o processo de descoberta.
+
+Se dispositivos forem encontrados, exiba uma lista com o nome de cada PC e um botão "Conectar" ao lado.
+
+Se nenhum dispositivo for encontrado, exiba os campos de texto para Endereço IP e Porta, e um botão "Conexão Manual".
+
+Um botão grande "INICIAR TRANSMISSÃO" que, quando a conexão é estabelecida, muda para "PARAR TRANSMISSÃO".
+
+Parte 2: Programa para PC (.exe)
+Tecnologias:
+
+Linguagem: Python.
+
+Bibliotecas: PyQt5 para a interface, OpenCV para vídeo, PyAudio para áudio, PyUSB para comunicação USB e PyInstaller para gerar o .exe.
+
+Estrutura Lógica Detalhada:
+
+Inicialização:
+
+Ao abrir, a janela principal da UI deve ser exibida. O programa deve iniciar um thread em background para ouvir pacotes UDP na porta de broadcast, agindo como um "servidor de descoberta".
+
+Módulo de Conexão (Modo Cliente e Descoberta):
+
+O programa deve responder a pacotes UDP de broadcast do celular com seu próprio endereço IP e um nome identificador.
+
+Modo Wi-Fi: O programa simplesmente aguarda a conexão TCP do celular. A UI não precisa iniciar a conexão, apenas exibir o status.
+
+Modo USB: Implemente a lógica para detectar o celular conectado, estabelecer a comunicação e iniciar a recepção dos streams.
+
+Módulo de Streaming (Receptor e Reprodutor):
+
+Crie um thread para receber, decodificar e sincronizar os streams de vídeo e áudio.
+
+Exiba o vídeo em tempo real na UI com OpenCV.
+
+Reproduza o áudio em tempo real com PyAudio.
+
+Interface do Usuário (UI):
+
+Layout: Uma janela principal com um painel grande no centro para o vídeo e um painel de controles na parte superior ou lateral.
+
+Controles:
+
+Botões de rádio para selecionar o modo de conexão: "Wi-Fi" e "USB".
+
+Um indicador de status claro: "Desconectado", "Aguardando conexão...", "Streaming Ativo (Wi-Fi)", "Streaming Ativo (USB)".
+
+Um slider de volume para o áudio recebido.
+
+Um botão "Conectar via USB" que, ao ser clicado, inicia a busca pelo dispositivo.
+
+Entregas Finais da IA:
+
+Código-fonte completo e comentado para o aplicativo Android e o programa para PC.
+
+O arquivo .apk compilado, pronto para instalação manual.
+
+O arquivo .exe autônomo, empacotado com todas as dependências, pronto para ser executado no Windows.
