@@ -61,7 +61,7 @@ Sistema completo de webcam remota com aplicativo Android (.apk) e programa Windo
 
 1. **Clone o repositório**:
 ```bash
-git clone https://github.com/seu-usuario/webcam-remota-universal.git
+git clone https://github.com/rafaaasenter/webcam-remota-universal.git
 cd webcam-remota-universal
 ```
 
@@ -187,8 +187,8 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 
 ## 📞 Suporte
 
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/webcam-remota-universal/issues)
-- **Documentação**: [Wiki do projeto](https://github.com/seu-usuario/webcam-remota-universal/wiki)
+- **Issues**: [GitHub Issues](https://github.com/rafaaasenter/webcam-remota-universal/issues)
+- **Documentação**: [Wiki do projeto](https://github.com/rafaaasenter/webcam-remota-universal/wiki)
 - **Email**: suporte@webcamremota.com
 
 ## 🎯 Roadmap
