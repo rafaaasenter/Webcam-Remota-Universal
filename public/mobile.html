@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Android - Webcam Remota Universal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="mobile-app">
+    <div class="mobile-container">
+        <!-- Status da conexão -->
+        <div class="connection-status" id="connectionStatus">
+            <i class="fas fa-wifi"></i>
+            <span id="statusText">Desconectado</span>
+        </div>
+
+        <!-- Visualização da câmera -->
+        <div class="camera-container">
+            <video id="localVideo" autoplay muted playsinline></video>
+            <canvas id="overlayCanvas"></canvas>
+            
+            <!-- Controles sobrepostos -->
+            <div class="camera-overlay">
+                <div class="top-controls">
+                    <button id="flashToggle" class="control-btn">
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                    <button id="cameraSwitch" class="control-btn">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button id="settingsBtn" class="control-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+
+                <div class="center-controls">
+                    <div class="focus-indicator" id="focusIndicator"></div>
+                </div>
+
+                <div class="bottom-controls">
+                    <div class="control-panel" id="controlPanel">
+                        <div class="connection-controls">
+                            <button id="discoverBtn" class="btn-primary">
+                                <i class="fas fa-search"></i> Procurar PCs
+                            </button>
+                            
+                            <div id="devicesList" class="devices-list hidden"></div>
+                            
+                            <div id="manualConnection" class="manual-connection hidden">
+                                <h4>Conexão Manual</h4>
+                                <input type="text" id="ipInput" placeholder="Endereço IP do PC" />
+                                <input type="number" id="portInput" placeholder="Porta" value="5000" />
+                                <button id="connectManualBtn" class="btn-secondary">
+                                    <i class="fas fa-link"></i> Conectar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="streaming-controls hidden" id="streamingControls">
+                            <button id="startStreamBtn" class="btn-start">
+                                <i class="fas fa-play"></i> INICIAR TRANSMISSÃO
+                            </button>
+                            <button id="stopStreamBtn" class="btn-stop hidden">
+                                <i class="fas fa-stop"></i> PARAR TRANSMISSÃO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel de configurações -->
+        <div class="settings-panel hidden" id="settingsPanel">
+            <div class="settings-content">
+                <h3><i class="fas fa-cog"></i> Configurações da Câmera</h3>
+                
+                <div class="setting-group">
+                    <label>Resolução</label>
+                    <select id="resolutionSelect">
+                        <option value="640x480">480p (640x480)</option>
+                        <option value="1280x720" selected>720p HD (1280x720)</option>
+                        <option value="1920x1080">1080p Full HD (1920x1080)</option>
+                        <option value="3840x2160">4K (3840x2160)</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label>Taxa de Quadros (FPS)</label>
+                    <select id="fpsSelect">
+                        <option value="15">15 FPS</option>
+                        <option value="24">24 FPS</option>
+                        <option value="30" selected>30 FPS</option>
+                        <option value="60">60 FPS</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label>Qualidade de Vídeo</label>
+                    <input type="range" id="qualitySlider" min="0.1" max="1.0" step="0.1" value="0.8" />
+                    <span id="qualityValue">80%</span>
+                </div>
+
+                <div class="setting-group">
+                    <label>Áudio</label>
+                    <div class="audio-controls">
+                        <input type="checkbox" id="audioEnabled" checked />
+                        <label for="audioEnabled">Transmitir áudio</label>
+                        <input type="range" id="audioGain" min="0" max="2" step="0.1" value="1" />
+                        <span id="audioGainValue">100%</span>
+                    </div>
+                </div>
+
+                <button id="closeSettings" class="btn-secondary">
+                    <i class="fas fa-times"></i> Fechar
+                </button>
+            </div>
+        </div>
+
+        <!-- Notificação persistente simulada -->
+        <div class="notification-bar hidden" id="notificationBar">
+            <div class="notification-content">
+                <i class="fas fa-video"></i>
+                <span>Transmitindo para PC...</span>
+                <button id="notificationStop">Parar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/webrtc-utils.js"></script>
+    <script src="js/mobile-app.js"></script>
+</body>
+</html>
