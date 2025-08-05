@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Webcam Remota Universal</string>
+    
+    <!-- Tela principal -->
+    <string name="connection_status_disconnected">Desconectado</string>
+    <string name="connection_status_connecting">Conectando...</string>
+    <string name="connection_status_connected">Conectado</string>
+    <string name="connection_status_streaming">Transmitindo</string>
+    
+    <!-- Botões -->
+    <string name="btn_discover_devices">Procurar PCs na Rede</string>
+    <string name="btn_connect_manual">Conectar Manualmente</string>
+    <string name="btn_start_streaming">INICIAR TRANSMISSÃO</string>
+    <string name="btn_stop_streaming">PARAR TRANSMISSÃO</string>
+    <string name="btn_switch_camera">Alternar Câmera</string>
+    <string name="btn_toggle_flash">Flash</string>
+    <string name="btn_settings">Configurações</string>
+    
+    <!-- Configurações -->
+    <string name="settings_title">Configurações da Câmera</string>
+    <string name="settings_resolution">Resolução</string>
+    <string name="settings_fps">Taxa de Quadros (FPS)</string>
+    <string name="settings_quality">Qualidade de Vídeo</string>
+    <string name="settings_audio">Áudio</string>
+    <string name="settings_audio_enabled">Transmitir áudio</string>
+    <string name="settings_close">Fechar</string>
+    
+    <!-- Resoluções -->
+    <string name="resolution_480p">480p (640x480)</string>
+    <string name="resolution_720p">720p HD (1280x720)</string>
+    <string name="resolution_1080p">1080p Full HD (1920x1080)</string>
+    <string name="resolution_4k">4K (3840x2160)</string>
+    
+    <!-- FPS -->
+    <string name="fps_15">15 FPS</string>
+    <string name="fps_24">24 FPS</string>
+    <string name="fps_30">30 FPS</string>
+    <string name="fps_60">60 FPS</string>
+    
+    <!-- Conexão manual -->
+    <string name="manual_connection_title">Conexão Manual</string>
+    <string name="manual_ip_hint">Endereço IP do PC (ex: 192.168.1.100)</string>
+    <string name="manual_port_hint">Porta (padrão: 5000)</string>
+    
+    <!-- Mensagens -->
+    <string name="msg_permissions_required">Este aplicativo precisa de acesso à câmera, microfone e rede para funcionar.</string>
+    <string name="msg_permissions_denied">Permissões necessárias foram negadas. O aplicativo não pode funcionar.</string>
+    <string name="msg_camera_error">Erro ao acessar a câmera</string>
+    <string name="msg_connection_error">Erro na conexão</string>
+    <string name="msg_devices_found">PC(s) encontrado(s)</string>
+    <string name="msg_no_devices_found">Nenhum PC encontrado automaticamente</string>
+    <string name="msg_connect_pc_first">Conecte-se a um PC primeiro</string>
+    <string name="msg_enter_ip_port">Por favor, insira o IP e a porta do PC</string>
+    <string name="msg_streaming_started">Transmissão iniciada</string>
+    <string name="msg_streaming_stopped">Transmissão finalizada</string>
+    <string name="msg_connection_rejected">Conexão rejeitada pelo PC</string>
+    
+    <!-- Notificação -->
+    <string name="notification_title">Webcam Remota</string>
+    <string name="notification_streaming">Transmitindo para PC...</string>
+    <string name="notification_stop">Parar</string>
+    
+    <!-- Serviço -->
+    <string name="service_name">Serviço de Webcam Remota</string>
+    <string name="service_description">Mantém a transmissão de vídeo ativa em segundo plano</string>
+    
+    <!-- Dispositivos -->
+    <string name="device_available">Disponível para conexão</string>
+    <string name="device_connecting">Conectando...</string>
+    <string name="device_connected">Conectado</string>
+    
+    <!-- Erros -->
+    <string name="error_camera_init">Erro ao inicializar câmera</string>
+    <string name="error_permissions">Erro de permissões</string>
+    <string name="error_network">Erro de rede</string>
+    <string name="error_streaming">Erro na transmissão</string>
+    <string name="error_flash_not_available">Flash não disponível neste dispositivo</string>
+    <string name="error_camera_switch">Erro ao alternar câmera</string>
+    
+    <!-- Sobre -->
+    <string name="about_title">Sobre</string>
+    <string name="about_version">Versão 1.0.0</string>
+    <string name="about_description">Sistema completo de webcam remota para streaming profissional via Wi-Fi e USB</string>
+</resources>

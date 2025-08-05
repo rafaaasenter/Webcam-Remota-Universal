@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cores principais -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF4081</color>
+    
+    <!-- Cores de background -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="status_bar_background">#CC000000</color>
+    <color name="controls_background">#E0000000</color>
+    
+    <!-- Cores de status -->
+    <color name="status_icon_color">#FFFFFF</color>
+    <color name="status_connected">#4CAF50</color>
+    <color name="status_connecting">#FF9800</color>
+    <color name="status_error">#F44336</color>
+    
+    <!-- Cores de botões -->
+    <color name="btn_primary_background">#2196F3</color>
+    <color name="btn_secondary_background">#607D8B</color>
+    <color name="btn_start_streaming">#4CAF50</color>
+    <color name="btn_stop_streaming">#F44336</color>
+    
+    <!-- Cores de texto -->
+    <color name="hint_color">#80FFFFFF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0FFFFFF</color>
+    
+    <!-- Cores de controles -->
+    <color name="camera_control_background">#80000000</color>
+    <color name="focus_indicator_color">#4CAF50</color>
+    
+    <!-- Cores de gradiente -->
+    <color name="gradient_start">#2196F3</color>
+    <color name="gradient_end">#1976D2</color>
+</resources>

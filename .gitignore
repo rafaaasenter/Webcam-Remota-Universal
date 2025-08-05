@@ -1,0 +1,124 @@
+# Webcam Remota Universal - .gitignore
+
+# Android específico
+android-app/local.properties
+android-app/.gradle/
+android-app/build/
+android-app/app/build/
+android-app/captures/
+android-app/.externalNativeBuild/
+android-app/.cxx/
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Android Studio
+android-app/.idea/
+android-app/*.iml
+android-app/.DS_Store
+android-app/build
+android-app/captures
+android-app/.externalNativeBuild
+
+# Python/Windows específico
+windows-app/__pycache__/
+windows-app/*.py[cod]
+windows-app/*$py.class
+windows-app/*.so
+windows-app/.Python
+windows-app/build/
+windows-app/develop-eggs/
+windows-app/dist/
+windows-app/downloads/
+windows-app/eggs/
+windows-app/.eggs/
+windows-app/lib/
+windows-app/lib64/
+windows-app/parts/
+windows-app/sdist/
+windows-app/var/
+windows-app/wheels/
+windows-app/*.egg-info/
+windows-app/.installed.cfg
+windows-app/*.egg
+windows-app/MANIFEST
+
+# PyInstaller
+windows-app/*.manifest
+windows-app/*.spec
+
+# Environments
+windows-app/.env
+windows-app/.venv
+windows-app/env/
+windows-app/venv/
+windows-app/ENV/
+windows-app/env.bak/
+windows-app/venv.bak/
+
+# Assets gerados
+windows-app/assets/*.png
+windows-app/assets/*.ico
+windows-app/assets/*.jpg
+windows-app/assets/*.jpeg
+
+# Logs
+*.log
+windows-app/logs/
+android-app/logs/
+
+# Distribuição
+dist/
+*.exe
+*.dmg
+*.zip
+*.tar.gz
+
+# Configurações locais
+config.local.json
+settings.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS específico
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporários
+*.tmp
+*.temp
+*.cache
+
+# Chaves e certificados
+*.keystore
+*.jks
+*.p12
+*.key
+*.pem
+*.crt
+
+# Banco de dados local
+*.db
+*.sqlite
+*.sqlite3
+
+# Node modules (se usar)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Gradle Wrapper (manter apenas se necessário)
+!android-app/gradle/wrapper/gradle-wrapper.jar
+!android-app/gradle/wrapper/gradle-wrapper.properties

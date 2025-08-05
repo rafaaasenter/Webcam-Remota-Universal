@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <!-- Prévia da câmera -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusBar"
+        app:scaleType="fillCenter" />
+
+    <!-- Barra de status superior -->
+    <LinearLayout
+        android:id="@+id/statusBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/status_bar_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/connectionStatusIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_disconnected"
+            android:tint="@color/status_icon_color" />
+
+        <TextView
+            android:id="@+id/tvConnectionStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Desconectado"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Controles da câmera (canto superior direito) -->
+    <LinearLayout
+        android:id="@+id/cameraControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusBar">
+
+        <ImageButton
+            android:id="@+id/btnToggleFlash"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/btn_camera_control_background"
+            android:contentDescription="Flash"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_flash_off"
+            android:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btnSwitchCamera"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/btn_camera_control_background"
+            android:contentDescription="Alternar Câmera"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_switch_camera"
+            android:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/btn_camera_control_background"
+            android:contentDescription="Configurações"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_settings"
+            android:tint="@color/white" />
+
+    </LinearLayout>
+
+    <!-- Indicador de foco -->
+    <View
+        android:id="@+id/focusIndicator"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/focus_indicator"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/previewView"
+        app:layout_constraintEnd_toEndOf="@+id/previewView"
+        app:layout_constraintStart_toStartOf="@+id/previewView"
+        app:layout_constraintTop_toTopOf="@+id/previewView" />
+
+    <!-- Painel de controles inferior -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@color/controls_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Controles de conexão -->
+            <LinearLayout
+                android:id="@+id/controlsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btnDiscoverDevices"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/btn_primary_background"
+                    android:text="Procurar PCs na Rede"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="8dp"
+                    android:gravity="center" />
+
+                <!-- Lista de dispositivos encontrados -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/devicesRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <!-- Conexão manual -->
+                <LinearLayout
+                    android:id="@+id/manualConnectionLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:background="@drawable/manual_connection_background"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Conexão Manual"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <EditText
+                        android:id="@+id/etManualIp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Endereço IP do PC (ex: 192.168.1.100)"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColorHint="@color/hint_color" />
+
+                    <EditText
+                        android:id="@+id/etManualPort"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Porta (padrão: 5000)"
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:text="5000"
+                        android:textColorHint="@color/hint_color" />
+
+                    <Button
+                        android:id="@+id/btnConnectManual"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/btn_secondary_background"
+                        android:text="Conectar Manualmente"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Controles de streaming -->
+            <LinearLayout
+                android:id="@+id/streamingControls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btnStartStreaming"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/btn_start_streaming_background"
+                    android:text="INICIAR TRANSMISSÃO"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:drawableStart="@drawable/ic_play"
+                    android:drawablePadding="8dp"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btnStopStreaming"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_stop_streaming_background"
+                    android:text="PARAR TRANSMISSÃO"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:drawableStart="@drawable/ic_stop"
+                    android:drawablePadding="8dp"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

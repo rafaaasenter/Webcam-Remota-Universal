@@ -2,9 +2,9 @@
 
 ## Overview
 
-This is a real-time webcam streaming system that allows Android devices to function as professional webcams for desktop computers. The system consists of a web-based application with separate interfaces for mobile devices (acting as webcam sources) and desktop computers (acting as video receivers). It uses WebRTC for peer-to-peer video streaming and Socket.IO for real-time communication and device discovery over local networks.
+This is a comprehensive native application system that transforms Android devices into professional webcams for Windows computers. The system consists of two native applications: an Android app (.apk) built with Kotlin that captures and transmits video/audio from the device's camera and microphone, and a Windows program (.exe) built with Python/PyQt5 that receives and displays the stream. Both applications are completely in Portuguese and communicate via Wi-Fi or USB connection.
 
-The application enables high-quality video streaming with features like camera switching, flash control, zoom functionality, video recording, and quality adjustments. It's designed to work seamlessly across Wi-Fi networks without requiring external tools or third-party applications.
+The system enables high-quality real-time streaming with advanced features including security encryption, multi-device support, session recording/playback, remote camera controls, quality adjustments, and professional streaming capabilities. It's designed to work seamlessly across local networks without requiring external tools or web browsers.
 
 ## User Preferences
 
@@ -12,18 +12,27 @@ Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
-### Frontend Architecture
-- **Multi-page Web Application**: Three distinct HTML pages serving different purposes:
-  - `index.html`: Device selection landing page
-  - `mobile.html`: Android webcam interface with camera controls
-  - `desktop.html`: PC receiver interface with video display and controls
-- **Responsive Design**: CSS-based styling with mobile-first approach and desktop adaptations
-- **Client-side JavaScript**: Modular architecture with separate scripts for mobile (`mobile-app.js`), desktop (`desktop-app.js`), and shared WebRTC utilities (`webrtc-utils.js`)
+### Android Application Architecture
+- **Native Android App (.apk)**: Built with Kotlin using modern Android development practices
+- **Camera2 API Integration**: Advanced camera control with support for multiple cameras, flash, focus, and zoom
+- **Material Design UI**: Professional interface in Portuguese with intuitive controls
+- **WebRTC Implementation**: Real-time peer-to-peer video streaming with adaptive quality
+- **Background Service**: Foreground service to maintain streaming when app is minimized
+- **Device Discovery**: UDP broadcast mechanism for automatic PC detection on local networks
 
-### Backend Architecture
-- **Express.js Server**: Lightweight HTTP server serving static files and handling routing
-- **Socket.IO Integration**: Real-time bidirectional communication for device discovery and connection management
-- **Device Management System**: In-memory storage using JavaScript Map to track connected devices and their states
+### Windows Application Architecture  
+- **Native Desktop Program (.exe)**: Built with Python and PyQt5 for professional Windows interface
+- **Multi-threaded Design**: Separate threads for UI, network communication, and media processing
+- **Advanced Video Player**: Custom widget with zoom, recording, and quality monitoring
+- **Connection Manager**: Handles both Wi-Fi and USB connection modes with automatic fallback
+- **System Tray Integration**: Minimizes to system tray for background operation
+- **Media Recording**: Built-in video recording with multiple format support
+
+### Communication Architecture
+- **Direct P2P Connection**: No web browser required - native socket communication
+- **Dual Connection Modes**: Wi-Fi (primary) and USB (fallback) connection options
+- **Custom Protocol**: Proprietary communication protocol optimized for low latency
+- **Security Layer**: Connection encryption and device authentication
 
 ### Real-time Communication
 - **WebRTC Implementation**: Peer-to-peer video streaming with STUN servers for NAT traversal
